@@ -1,0 +1,27 @@
+version: '2.2'
+services:
+
+ postgres:
+    image: postgres:latest
+    container_name: airflow-postgres
+    hostname: postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_MULTIPLE_DATABASES: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - airflow-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+volumes:
+  airflow-db:
