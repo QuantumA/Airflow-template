@@ -15,6 +15,11 @@
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+__pycache__/
+__pycache__/*
+dags/__pycache__/
+
+*.pyc
 
 ### VisualStudioCode ###
 .vscode/*
@@ -45,3 +50,5 @@ airflow-webserver.pid
 logs/
 standalone_admin_password.txt
 webserver_config.py
+
+
